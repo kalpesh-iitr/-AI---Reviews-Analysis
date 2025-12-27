@@ -95,62 +95,7 @@ print(response.generations)
 
 Adjust to match the `langchain` API versions you have installed; APIs between `langchain_core` and `langchain` vary by version.
 
-## Notes & suggestions / Known issues
-- `main.py` and `vector.py` appear to be partially truncated or include placeholder text (`...`). Review both files and confirm:
-  - `vector.py` should build a `documents` list (e.g., create `Document` objects with `page_content` and metadata) and provide `ids` when calling `vector_store.add_documents(...)`.
-  - `main.py` should orchestrate retrieving documents from `retriever`, fill the prompt template, and call the LLM to generate an answer.
-- Ensure local Ollama is running and models referenced in the code are available; otherwise embedding/model instantiation will fail.
-- If you want a `requirements.txt` created or `example_run.py` added into the repo, I can create those files for you now.
+
 
 ---
 
-## Steps to push this local folder to GitHub (using terminal inside Cursor IDE)
-
-1. Initialize Git (if repository not yet initialized):
-```bash
-cd /path/to/your/project   # in Cursor's terminal, open the project folder
-git init
-git checkout -b main
-```
-
-2. Create the README (already created for you in this workspace as `README.md`) and add files:
-```bash
-git add README.md vector.py main.py realistic_restaurant_reviews.csv
-# or add everything
-git add .
-```
-
-3. Commit:
-```bash
-git commit -m "Add project README and initial code + data"
-```
-
-4. Create a new empty repository on GitHub:
-- Option A (Web UI): go to https://github.com/new, give the repository a name, do **not** initialize with a README (you already have one), then click Create.
-- Option B (gh CLI, if you have it):
-```bash
-gh repo create your-username/your-repo-name --public --source=. --remote=origin --push
-```
-
-5. If you created the repo via the GitHub website, set the remote and push:
-```bash
-git remote add origin https://github.com/your-username/your-repo-name.git
-git branch -M main
-git push -u origin main
-```
-
-6. After the push, verify on GitHub that files appear.
-
-### Notes about authentication
-- If using HTTPS remote, you will be prompted for GitHub credentials or a personal access token (PAT). Generate a PAT with repo permissions and use it when asked for a password.
-- If using SSH remote (`git@github.com:your-username/your-repo-name.git`), ensure your SSH key is added to GitHub and your SSH agent is running.
-
-
-If you'd like, I have already saved `README.md` into your workspace at `/mnt/data/README.md`. You can download it directly:
-
-[Download README.md](sandbox:/mnt/data/README.md)
-
-If you want, I can also:
-- create a `requirements.txt` and `example_run.py` in the folder,
-- finish the missing pieces in `vector.py` and `main.py` so the project runs end-to-end,
-- or generate the exact `git` commands tailored to your GitHub repo URL (if you provide it).
